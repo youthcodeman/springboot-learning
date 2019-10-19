@@ -1,0 +1,1 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.hzg.springboot.RunnableConfiguration,org.hzg.springboot.Role
