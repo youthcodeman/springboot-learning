@@ -8,6 +8,7 @@ import org.hzg.springboot.aboutImport.Car;
 import org.hzg.springboot.aboutImport.Cat;
 import org.hzg.springboot.aboutImport.Jeep;
 import org.hzg.springboot.aboutImport.MyConfiguration;
+import org.hzg.springboot.beanDefinationRegistray.DemoBean;
 import org.hzg.springboot.enableDemo.MyEnableUserConfuguration;
 import org.hzg.springboot.enableDemo.UserConfiguration;
 import org.hzg.springboot.importSelector.MyImportSelector;
@@ -45,5 +46,7 @@ public class App {
         System.out.println(configurableApplicationContext.getBean(Cat.class));
         System.out.println(configurableApplicationContext.getBean(Jeep.class));
         System.out.println(configurableApplicationContext.getBeansOfType(Car.class));
+
+        System.out.println(configurableApplicationContext.getBeansOfType(DemoBean.class) + "=====importBeanDefinationRegistrary");
     }
 }

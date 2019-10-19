@@ -1,5 +1,6 @@
 package org.hzg.springboot.enableDemo;
 
+import org.hzg.springboot.beanDefinationRegistray.RegistryBeanByBeanDefinationRegistrary;
 import org.hzg.springboot.importSelector.MyImportSelector;
 import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.AsyncConfigurationSelector;
@@ -14,7 +15,8 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import({MyImportSelector.class})
+@Import({MyImportSelector.class, RegistryBeanByBeanDefinationRegistrary.class})
+
 public @interface MyEnableUserConfuguration {
 
 }
