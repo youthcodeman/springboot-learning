@@ -4,8 +4,11 @@ package org.hzg.springboot;
 import org.hzg.springboot.dao.UserDao;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.data.redis.*;
+import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import redis.clients.jedis.Jedis;
 
 /**
  *
@@ -23,10 +26,17 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  */
 @SpringBootApplication
 @EnableAspectJAutoProxy
+//@EnableRedis      两种方式启动mydis stater 第一种注解的方式，在EnableRedis 中import自定义的配置类  第二种交给springboot自动扫描在自定义stater的resource目录下
+//新建 /META-INF/spring.factories 增加配置项org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.edu.spring.boot.redis.RedisAutoConfiguration
 public class App {
     public static void main( String[] args ) throws Exception{
     	SpringApplication app = new SpringApplication(App.class);
         ConfigurableApplicationContext configurableApplicationContext = app.run(args);
         configurableApplicationContext.getBean(UserDao.class).addUser("zhangsan","123456");
+
+        //测试自定义rediss stater
+        Jedis jedis = (Jedis)configurableApplicationContext.getBean("createJedis");
+        jedis.set("111","foobar");
+        jedis.get("111");
     }
 }
