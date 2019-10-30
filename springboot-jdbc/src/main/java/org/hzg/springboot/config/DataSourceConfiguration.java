@@ -1,5 +1,6 @@
 package org.hzg.springboot.config;
 
+import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -24,6 +25,11 @@ public class DataSourceConfiguration {
 
     @Bean
     public DataSource createDruidDataSource() {
-        return null;
+        DruidDataSource dataSource = new DruidDataSource();
+        dataSource.setDriverClassName(driverClassName);
+        dataSource.setUrl(url);
+        dataSource.setUsername(userName);
+        dataSource.setPassword(password);
+        return dataSource;
     }
 }
